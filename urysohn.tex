@@ -1,0 +1,172 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 9in}]{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{corollary}{Corolaire}[theorem]
+\newtheorem{definition}{Définition}[section]
+\newtheorem*{lemma}{Lemme}
+\newtheorem{notation}{Notation}
+
+\setlength{\parindent}{3em}
+\renewcommand{\baselinestretch}{1.5}
+
+\title{Notes sur le lemme de Urysohn} 
+\author{Hongyu Zhang}
+
+\begin{document}
+\maketitle
+
+Dans cet article, on va discuter les formes différentes du lemme de Urysohn, et ses applications, par exemple, le théorème de Lusin et le théorème de carathéodory.\par
+
+
+\section{lemme de Urysohn}
+
+D'abord on précise quelques définitions:
+\begin{definition}
+    Dans un espace topologique, un voisinage d'un point est un ouvert contenant ce point.
+\end{definition}
+
+\begin{definition}
+     Un espace topologique est dit de Hausdorff si pour $p, q \in X$, $p \neq q$, p a un voisinage $W$ et q a un voisinage $V$ tels que $W \cap V = \emptyset$.
+\end{definition}
+
+\begin{definition}
+    Un espace topologique est dit localement compact si chaque point a un voisinage dont la fermeture est compacte.
+\end{definition}
+
+Maintenant on précise une proprieté élémentaire de l'espace de Hausdorff:
+
+\begin{theorem}
+    Soit X est un espace de Hausdorff, K est un sous-ensemble compact. P $\in K^{c}$, alors il existe deux ouverts W et V tels que $K \subset W, p \in V$, et $W \cap V= \emptyset $ .  
+\end{theorem}
+
+\begin{proof}
+    Soient p $\in K^{c}$ ,  q $\in$ K, comme X est de Hausdorff, il y a deux ouverts  $O_{p}$  et  $O_{q}$ tels que $p\in O{_p}, q\in O_{q}$, et $O_{p} \cap O_{q} = \emptyset$. Puisque K est compact, il existe $O_{q_1} \ldots O_{q_n}$ tels que K $\subset \cup_{i=1}^n O_{q_i}$. On a aussi p $\in \cap_{i=1}^n O_{p_i}$, qui est un ouvert disjoint de $\cup_{i=1}^n O_{q_i}$. On prend W= $\cup_{i=1}^n O_{q_i}$, V=$\cap_{i=1}^n O_{p_i}$.
+\end{proof}
+
+Par consequence, dans un espace de Hausdorff, tout sous-ensemble compact est fermé. On a donc le corrolaire ci-dessous:
+
+\begin{corollary}
+Supposons $\{ K_{\alpha } \} $ est une collection de sous-ensembles compacts d'un espace de Hausdorff X avec $\cap_{\alpha }K_{\alpha}=\emptyset$ , il existe un sous-collection finie de ${K_{\alpha }}$ dont l'intersection des éléments est vide.
+\end{corollary}
+
+\begin{proof}
+    Soit $K_{1} \in {K_{\alpha}}$. Comme $\cap_{\alpha }K_{\alpha}=\emptyset$, $K_{1} \subset \cap_{\alpha \neq 1}K_{\alpha}^{c}$. D'après le théorème ci-dessus, $K_{\alpha}$ est fermé. Et puisque $K_{1}$ est compact, il existe $\alpha_{2} \dots \alpha_{n}$ tels que $K_{1} \subset \cap_{i=2}^n  K_{\alpha_{i}}^{c}$ , i.e., $K_{1} \cap (\cap_{i = 2}^{n} K_{\alpha_{i}} ) = \emptyset$.
+\end{proof}
+
+Voici un résultat essentiel pour montrer lemme de Urysohn, qui est basé sur le théorème ci-dessus.
+\begin{theorem}
+      Supposons U est ouvert dans un espace de Hausdorff localement compact X, K $\subset$ U, et K est compact. Alors il existe un ouvert V dont la fermeture est compacte tel que: 
+      \[K \subset V \subset \overline{V} \subset U.\] 
+\end{theorem}
+
+
+\begin{proof}
+     Comme X est localement compact, chaque poi snt de K a un voisinage dont la fermeture est compacte. Comme K est compact, K est inclus dans un union fini de ces ouverts, notons ceci comme G. La fermeture de G est aussi compact. Si U = X, on prend G = V.\par
+     Si U $\neq$ X, notons C le complément de U dans X. Soit p $\in$ C, d'après le théorème 1.1, il existe un ouvert $W_{p}$ tel que K $\subset W_{q}$ et p $\notin \overline{W}_{q}$.
+     Alors $\{C \cap \overline{G} \cap \overline{W}_{p}, p \in C \}$ est une collection d'ensembles compacts dont l'intersection de tous les éléments est vide. En applicant le corolaire 1.1.1, il existe n $\in$ N tel que: 
+    \[C  \cap  \overline{G}  \cap \overline{W}_{p_{1}} \cap \dots \cap \overline{W}_{p_{n}}= \emptyset\]\par
+    Ceci entraine que $\overline{G}  \cap \overline{W}_{p_{1}} \cap \dots \cap \overline{W}_{p_{n}} \subset U$. On prend V = $G  \cap W_{p_{1}} \cap \dots \cap {W}_{p_{n}}$, qui est bien inclus dans $\overline{G}  \cap \overline{W}_{p_{1}} \cap \dots \cap \overline{W}_{p_{n}}$ . La fermeture de V est un fermé dans G, donc est aussi compacte. 
+
+\end{proof}
+
+Sur la base de cette conclusion, nous pouvons imaginer un peu plus loin. Si on a déjà construit $K \subset V_{1} \subset \overline{V}_{1} \subset U$, on peut encore une fois trouver un nouvel ouvert pris en sandwich entre $\overline{V}_{1}$ et U tel que:
+\[K \subset V_{1} \subset \overline{V}_{1} \subset V_{0} \subset \overline{V}_{0}\subset U\]
+Et ce processus peut etre exécuté un nombre infini de fois... et éventuellement on peut construire une suite d'ouverts (et de ses fermetures aussi) qui s'imbriquent les unes dans les autres. On peut aussi établir une suite des fonctions caractéristiques correspondants à ces ouverts et à ces fermés. En passant à la limite, il peut etre possible d'obtenir une fonction continue qui dans un sens 'connecter' $\chi _{K}$ et $\chi _{V}$. Pour acquérir une conclusion rigoureuse, nous avons besoin de déveloper nouvelles conceptions: 
+
+
+\begin{definition}
+Soit f une fonction réelle sur un espace topologique, si 
+\[\{ x:f(x)>\alpha \}\]
+est ouvert pour tout $\alpha$ réel, on dit que f est lower semi-continue.
+si 
+\[\{ x:f(x)<\alpha \} \]
+est ouvert pour tout $\alpha$ réel, on dit que f est upper semi-continue.
+\end{definition}
+Alors une fonction réelle sur un espace topologique f est continue ssi f est à la fois lower et upper semi-continue. Les fonctions caractéristiques servent d'exemples les plus simples : \par
+(a) Les fonctions caractéristiques des ouverts sont lower semi-continues.\par
+(b) Les fonctions caractéristiques des fermés sont upper semi-continues.\par
+On a aussi un résultat immédiat des définitions: Le supremum d'une collection arbitraire des fonctions lower semi-continues est lower semi-continue. L'infimum d'une collection des foncitons upper semi-continues est upper semi-continue. \par
+On utilisera ce résultat dans le preuve suivant: on approchera la fonction désirable par une suite des fonctions caractéristiques, dont les proprietés sont bien connues.
+Avant d'introduire le lemme de Urysohn, on définit deux notations:
+\begin{notation}
+La notation 
+\[K \prec f\]
+signifie que K est un sous-ensemble compact de X, et que la fonction complexe f est continue à support compact, i.e., f $\in C_{c}( X ) $, $ 0 \leq  f \leq  1$, et que $f( x ) = 1 $ pour tout x $\in$ X. Et la notation 
+\[f \prec V\]
+signifie que V est ouvert, et que f $\in C_{c}( X )$, $ 0 \leq  f \leq  1$ et que V contient le support de f. 
+\end{notation}
+
+
+\begin{lemma}[de Urysohn]
+Supposons X est un espace de Hausdorff localement compact, V est un ouvert dans X, K $\subset$ V, et K est compact. Alors il existe une f $\in C_{c}(X)$ , telle que 
+\[K\prec f \prec V .\]
+Autrement dit, il existe une fonction complexe continue à support compact telle que $\chi _{K} \leq f \preceq  \chi _{V}$. 
+\end{lemma}
+
+\begin{proof}
+C'est assez facile de trouver des fonctions caractéristiques qui satisfait le théorème ci-dessus, par exemple, $\chi _{K}$ et $\chi _{V}$.  
+Posons $r_{1}=0, r_{2}=1$, soit $r_{3}, r_{4}, r_{5} ...$ une énumération des nombres rationels dans [0,1]. D'après le théorème 1.2, on peut trouver $V_{0}, V_{1}$ tels que: 
+\[K \subset V_{1} \subset \overline{V}_{1} \subset V_{0} \subset \overline{V}_{0}\subset U\]
+Supposons que $n \geq 2$, et que on a déjà trouvé des $V_{r_{1}} \dots V_{r_{n}}$ tels que $\overline{V}_{r_{j}} \subset V_{r_{i}}$ pour $ r_{i} < r_{j} $. Alors pour $r_{n+1}$, il existe un plus grand nombre $r_{i}$ de $\{r_{1} \dots r_{n}\}$ qui est inférieure à $r_{n+1}$, et un plus petit nombre $r_{j}$ qui est supérieure à $r_{n+1}$, donc d'après le théorème 1.2, on peut trouvé un ouvert $V_{r_{n+1}}$ tel que:
+\[\overline{V}_{r_{j}} \subset V_{r_{n+1}} \subset \overline{V}_{r_{n+1}} \subset V_{r_{i}} \]
+Ainsi, on peut construire une collection $\{V_{r}\}$ telle que $K \subset V_{1}$, $\overline{V}_{0} \subset V$, la fermeture de tout $V_{r}$ est compact, et que 
+\[ \forall s,t \in \mathbf{Q} \cap [0,1],  ( s < t )  \Rightarrow  (\overline{V}_{t} \subset V_{s} )\]
+Maintenant supposons 
+\[ f_{r} (x)= 
+    \begin{cases}
+    r, si\ x \in V_{r} ; \\
+    0, sinon, \\
+    \end{cases} \]
+
+   \[ 
+   g_{s}(X)=
+   \begin{cases}
+   1, si\ x \in \overline{V}_{s}; \\
+   s, sinon, \\   
+   \end{cases}
+\]
+et que f est le supremum des $f_{r}$, g est l'infimum des $g_{s}$. Comme $f_{r} \ et \ g_{s}$ sont fonctions caractéristiques, elles sont semi-continues. Alors f est lower semicontinue, g est upper semi-continue, d'après la remarque de la définition 1.2. \par
+On vérifie facilement les faits suivants: $0 \leq f \leq 1$ sur X et $f(x)=1$ sur K, le support de f se trouve à l'intérieure de $\overline{V}_{0}$ donc son support est compact. $0 \leq g \leq 1$ et le support de g se trouve à l'intérieure de V. Alors il suffit de montrer que f = g.\par 
+Soient r, s deux nombres rationels dans [0,1], alors $f_{r}(x) \leq  g_{s}(x)$ pour tout x $\in$ X. En effet, s'il existe un x $\in$ X tel que $f_{r}(x) > g_{s}(x)$ , il ne peut que $f_{r}(x)=r, \ et \  g_{s} (x)= s $, donc on a $r > s$. Mais cela entraine que $V_{r} \subset V_{s}$ donc $g_{s}(x) =1, \ et \ f_{r}(x) > 1$. Cela contredit notre hypothèse. 
+En passant à la limite, on a $f \leq g$. Supposons $f < g$,  soit x $\in$ X, on prend p, q deux nombres rationels tel que $ f(x)< p < q < g(x) $, donc $\overline{V}_{q} \subset V_{p}$. 
+Comme $f_{p}(x) \leq f(x) < p$, x $\notin V_{p}$ . Comme $g_{q} (x) > g(x) > q$, on a $x \in \overline{V}_{p}$. Ceci est absurde. On conclut que f = g.     
+\end{proof}
+
+\section{Application}
+Dans cette section, on discute les applications du lemme de Urysohn, notamment, le théorème de Lusin et comment on utilise ce lemme dans la probabilité. \par
+
+Maintenant on muni l'espace de Hausdorff localement compact X une tribu engendrée par les ouverts de X. D'après le théorème de représentation de Riesz, la seul mesure $\mu$ sur X a deux proprietés:\par
+
+(a) Pour tout emsemble mesurable E, on a 
+\[\mu(E) = inf \{ \mu(V): E \subset V, \ V\ est\ ouvert \}.\]
+
+(b) pour tout ouvert E ou emsemble mesurable E tel que $\mu(E) < \infty$, on a 
+\[\mu(E) = sup \{ \mu(K): K \subset E, \ K\ est \ compact \}.\]
+
+
+\begin{theorem}[de Lusin]
+    Supposons que f est une fonction complexe mesurable sur un espace de Hausdorff localement compact, $\mu$ est une mesure sur X, $\mu (A) < \infty$, $f(x) = 0$ si x $\notin$ A, et $\varepsilon >0$. Donc il existe g $\in C_{c}(X)$ tel que 
+    \[\mu ({x: f(x) \neq g(x)}) < \varepsilon . \]
+
+\end{theorem}
+
+\begin{proof}
+    D'abord on suppose que $0 \leq f \leq 1$ et A est compact. Alors il existe une suite croissante de fonctions simples $\{S_{n}\}$ convergeant vers f. Plus précisément, posons $\delta_{n} = 2^{-n}$. Pour tout entier positive n et tout nombre réel alors il existe un entier unique $k = k_{n}(t)$ tel que $ k\delta_{n} \leq t \leq (k+1)\delta_{n}$. Posons alors que 
+
+    \[s_{n}(t) = \begin{cases}
+      k_{n}(t)\delta_{n}(t), \ si\ 0\leq t \leq n, \\  
+      n, \ \ \ \ \ \ \ \  \ \ ,\  si\ t > n. \\  
+    \end{cases}
+    \] 
+    Posons $t_{1}= s_{1}$ et $t_{n} = s_{n} - s_{n-1} = $, on a $ f = \sum _{n=1}^{\infty} t_{n} $. On peut vérifier aussi (éventuellement par le biais du dessin) que $2^{n}t_{n}$ est une fonction caractéristiques d'un ensemble $T_{n} \subset A$. \par
+    Maintenant on prends un ouvert V contenant A et la fermeture de V est compacte, qui est possible car X est localement compact.
+     D'après la remarque (a) et (b) ci-dessus, il existe $K_{n}$ et $V_{n}$ tels que $K_{n} \subset T_{n} \subset V_{n}$ et que $\mu \{V_{n} - K_{n}\} < 2^{-n}\varepsilon$. D'après le lemme de Urysohn, il existe $h_{n} \in C_{c}(X)$ tel que $K_{n} \prec h_{n} \prec V_{n}.$ \par
+    Posons g = $\sum_{n=1}^{\infty}2^{-n}h_{n}$, alors g est uniformément convergente, donc g est continue. Comme $\{h_{n} \neq 2^{n}t_{n}\} \subset \{V_{n} - K_{n}\}$, alors $\mu\{h_{n} \neq 2^{n}t_{n}\} \leq \mu\{V_{n} - K_{n}\} \leq 2^{-n}\varepsilon.$ Donc $\mu \{g \neq h\} \leq \sum_{n=1}^{\infty}\{V_{n} - K_{n}\} \leq \varepsilon.$ 
+
+\end{proof}
+
+
+\end{document}
