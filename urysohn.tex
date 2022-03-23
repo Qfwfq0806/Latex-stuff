@@ -18,8 +18,8 @@
 \begin{document}
 \maketitle
 
-Dans cet article, on va discuter les formes différentes du lemme de Urysohn, et ses applications, par exemple, le théorème de Lusin et le théorème de carathéodory.\par
-
+Il y a beaucoup de relations entre les fonctions continues et les fonctions mesurables. Dans cet article, on s'investit dans cette problème un peu plus. On va discuter les formes différentes du lemme de Urysohn, et ses applications, par exemple, le théorème de Lusin et le théorème de carathéodory.\par
+Dans la théorie de mesure, on a déjà connu bien que toutes les fonctions continues sur un espace muni une mesure borélienne sont mesurables. Réciproquement, le théorème de Lusin nous dit que sous certaines hypothèses, les fonctions mesurables peut etre approximées par des fonctions continues. \par
 
 \section{lemme de Urysohn}
 
@@ -36,7 +36,7 @@ D'abord on précise quelques définitions:
     Un espace topologique est dit localement compact si chaque point a un voisinage dont la fermeture est compacte.
 \end{definition}
 
-Maintenant on précise une proprieté élémentaire de l'espace de Hausdorff:
+Dans cet article, on travaille principalement sur un espace de Hausdorff localement compact. L'espace $R^{k}$ est bien un cas particulier. Maintenant on précise une proprieté élémentaire de l'espace de Hausdorff:
 
 \begin{theorem}
     Soit X est un espace de Hausdorff, K est un sous-ensemble compact. P $\in K^{c}$, alors il existe deux ouverts W et V tels que $K \subset W, p \in V$, et $W \cap V= \emptyset $ .  
@@ -135,7 +135,7 @@ En passant à la limite, on a $f \leq g$. Supposons $f < g$,  soit x $\in$ X, on
 Comme $f_{p}(x) \leq f(x) < p$, x $\notin V_{p}$ . Comme $g_{q} (x) > g(x) > q$, on a $x \in \overline{V}_{p}$. Ceci est absurde. On conclut que f = g.     
 \end{proof}
 
-\section{Application}
+\section{Théorème de Lusin}
 Dans cette section, on discute les applications du lemme de Urysohn, notamment, le théorème de Lusin et comment on utilise ce lemme dans la probabilité. \par
 
 Maintenant on muni l'espace de Hausdorff localement compact X une tribu engendrée par les ouverts de X. D'après le théorème de représentation de Riesz, la seul mesure $\mu$ sur X a deux proprietés:\par
@@ -149,7 +149,13 @@ Maintenant on muni l'espace de Hausdorff localement compact X une tribu engendr�
 
 \begin{theorem}[de Lusin]
     Supposons que f est une fonction complexe mesurable sur un espace de Hausdorff localement compact, $\mu$ est une mesure sur X, $\mu (A) < \infty$, $f(x) = 0$ si x $\notin$ A, et $\varepsilon >0$. Donc il existe g $\in C_{c}(X)$ tel que 
-    \[\mu ({x: f(x) \neq g(x)}) < \varepsilon . \]
+    \begin{equation}
+        \mu ({x: f(x) \neq g(x)}) < \varepsilon .  
+    \end{equation}
+    De plus, nous pouvons l'arranger pour que 
+    \begin{equation}
+    \sup_{x\in X} |g(x)| \leq \sup_{x\in X} |f(x)|.
+    \end{equation}
 
 \end{theorem}
 
@@ -164,9 +170,55 @@ Maintenant on muni l'espace de Hausdorff localement compact X une tribu engendr�
     Posons $t_{1}= s_{1}$ et $t_{n} = s_{n} - s_{n-1} = $, on a $ f = \sum _{n=1}^{\infty} t_{n} $. On peut vérifier aussi (éventuellement par le biais du dessin) que $2^{n}t_{n}$ est une fonction caractéristiques d'un ensemble $T_{n} \subset A$. \par
     Maintenant on prends un ouvert V contenant A et la fermeture de V est compacte, qui est possible car X est localement compact.
      D'après la remarque (a) et (b) ci-dessus, il existe $K_{n}$ et $V_{n}$ tels que $K_{n} \subset T_{n} \subset V_{n}$ et que $\mu \{V_{n} - K_{n}\} < 2^{-n}\varepsilon$. D'après le lemme de Urysohn, il existe $h_{n} \in C_{c}(X)$ tel que $K_{n} \prec h_{n} \prec V_{n}.$ \par
-    Posons g = $\sum_{n=1}^{\infty}2^{-n}h_{n}$, alors g est uniformément convergente, donc g est continue. Comme $\{h_{n} \neq 2^{n}t_{n}\} \subset \{V_{n} - K_{n}\}$, alors $\mu\{h_{n} \neq 2^{n}t_{n}\} \leq \mu\{V_{n} - K_{n}\} \leq 2^{-n}\varepsilon.$ Donc $\mu \{g \neq h\} \leq \sum_{n=1}^{\infty}\{V_{n} - K_{n}\} \leq \varepsilon.$ 
-
+    Posons g = $\sum_{n=1}^{\infty}2^{-n}h_{n}$, alors g est uniformément convergente, donc g est continue. Comme $\{h_{n} \neq 2^{n}t_{n}\} \subset \{V_{n} - K_{n}\}$, alors $\mu\{h_{n} \neq 2^{n}t_{n}\} \leq \mu\{V_{n} - K_{n}\} \leq 2^{-n}\varepsilon.$ Donc $\mu \{g \neq h\} \leq \sum_{n=1}^{\infty}\{V_{n} - K_{n}\} \leq \varepsilon.$ \par
+    (1) est aussi valable pour que A est compact et que f est complexe mesurable bornée. Maintenant on vérifie le cas où A n'est pas nécessairement compact. D'après la remarque (b) ci-dessus, pour tout $\varepsilon >0$, il existe un K compact tel que $\mu \{A - K\} < \varepsilon$. Soit f est une fonction complexe mesurable, posons $B_{n} = \{ |f(x)|> n \}$,  alors $\  \cap B_{n} = \emptyset$, $\mu\{B_{n}\} \leq \mu \{A\} \leq \infty$, et $\{B_{n}\}$ est décroissante, donc $\lim_{n \rightarrow \infty} B_{n} = 0$. Comme $(1- \chi_{B_{n}} )f$ est bornée, et elle est équale à f en dehors de $B_{n}$. On conclut alors que (1) est valable pour tout A de mesure finie et toute f complexe mesurable sur X. \par
+    Finalement, posons R = $\sup_{x\in X} |f(x)|$, et pour tout nombre complexe, posons $\phi(z) = z, si \ |z| \leq R$, $\phi(z) = Rz/|z|, \ si\ z > R.$ Alors $\phi$ est une fonction continue qui transforme la plane complexe en un disque de rayon R. Alors posons $g_{1}= \phi g$ est une fonction qui satisfait (2).
 \end{proof}
+
+\begin{corollary}
+Sous l'hypothèses du théorème de Lusin, on suppose que $|f(x)| \leq 1$. Alors il existe une suite $\{g_{n}\}$ telle que $g_{n} \in C_{c}(X)$, $|g_{n}(x)| \leq 1$ et 
+\[ f(x) = \lim_{n \rightarrow \infty} g_{n}(x)  \ \ \ \ \ p.p.\]
+\end{corollary}
+
+Mainteant il y a une question: que aura lieu pour $|f| >1$ ?
+
+\begin{proof}
+D'après le théorème de Lusin, pour tout entier positif n, il existe une fonction correspondante $g_{n}$ telle que $g_{n} \in C_{c}(X)$ ,  $|g_{n}| \leq 1$,  et que $g_{n} = f$ en dehors de $E_{n}$ où $\mu \{E_{n}\} \leq 2^{-n}$. Comme $\sum_{n = 1}^{\infty} \mu\{E_{n}\} < \infty$, d'après le lemme de Borel-Cantelli, pour presque tout x $\in$ X, il existe un nombre fini de n tel que $x\in E_{n}$. C'est-à-dire que pour presque tout x de X, il existe un nombre positif N assez grand tel que pour tout $n > N, \ f = g_{n}$.  
+\end{proof}
+
+On rappel une application classique dans la théorie de probabilités.
+
+\begin{theorem}
+Soient $X_{1} \dots X_{n}$ n variables aléatoires réelles sur un espaces de probabilité, alors $X_{1} \dots X_{n}$ sont indépendants ssi pour $f_{1}\dots f_{n}$ continues à support compact de $\mathcal{R} $ dans $\mathcal{R}_{+}$ on a 
+\[E[\prod_{i=1}^{n}f_{i}(X_{i})] = \prod_{i=1}^{n}E[f_{i}(X_{i})].\]
+\end{theorem}
+
+\begin{proof}
+D'après le théorème de Fubini, la condition est nécessaire.  
+Réciproquement, soient $A_{1} \dots A_{n}$ des ensembles boréliennes, alors pour tout $0 \leq i \leq n$, il existe une suite de fonctions $(f_{i}^{k})_{k}$ continues à support compact convergeant p.p. vers $\chi _{A_{i}}$ et $|f_{i}^{k}| \leq 1$. Donc d'après le théorème de convergence dominée, on a 
+\begin{equation}
+    \lim_{k \to \infty} E[f_{i}^{k}(X)] = E[\chi_{A_{i}}(X)] = P(A_{i}) 
+\end{equation}
+
+\begin{equation}
+    \lim_{k \to \infty} E[\prod_{i=1}^{n}f_{i}^{k}(X_{i})] = E[\prod_{i=1}^{n} \chi_{A_{i}}(X_{i})] = P_{(X_{1}\dots X_{n})}(A_{1} \times \cdots \times A_{n}) 
+\end{equation}
+
+\par 
+\par
+   \[ \Longrightarrow  P_{(X_{1}\dots X_{n})}(A_{1} \times \cdots \times A_{n}) = \prod_{i=1}^{n} P(A_{i}) \]
+
+\par
+D'après le lemme de classe monotone, on peut vérifier que $P_{(X_{1} \dots X_{n})} = P_{X_{1}}\otimes \cdots \otimes P_{X_{n}} $
+\end{proof}
+
+Voici une autre application du théorème de Lusin dans l'espace $L^{p}(\mu)$.
+
+\begin{theorem}
+    Supposons X est un espace de Hausdorff localement compact muni une tribu et une mesure. Pour $1 \leq p < \infty$, $C_{c}(X)$ est dense dans $L^{p}(\mu)$.
+\end{theorem}
+
+
 
 
 \end{document}
